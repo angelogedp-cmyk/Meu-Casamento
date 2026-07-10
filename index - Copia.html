@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nadine & Angelo | Nosso Casamento</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cor-fundo: #fcfbfa;
+            --cor-primaria: #4a5d4e; 
+            --cor-secundaria: #8c7a6b; 
+            --cor-texto: #333333;
+            --cor-cartao: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        /* --- CABEÇALHO COM A FOTO PRINCIPAL LOCAL --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* Aqui está o comando puxando a sua foto principal */
+            background: linear-gradient(rgba(252, 251, 250, 0.88), rgba(252, 251, 250, 0.88)), 
+                        url('imagens/foto-principal.jpg') center/cover no-repeat;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.2rem;
+            font-weight: 400;
+            color: var(--cor-primaria);
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--cor-secundaria);
+            margin-bottom: 40px;
+        }
+
+        #contador { display: flex; gap: 20px; margin-top: 10px; }
+        .tempo-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 18px 22px;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            min-width: 85px;
+            border: 1px solid rgba(140, 122, 107, 0.1);
+        }
+        .tempo-numero {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--cor-primaria);
+            display: block;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        .tempo-rotulo { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--cor-secundaria); }
+
+        /* --- ESTILOS DO CARROSSEL DE FOTOS --- */
+        .secao-carrossel {
+            padding: 80px 20px 20px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .carrossel-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #f0ede9;
+        }
+        .carrossel-slide {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carrossel-slide img {
+            width: 100%;
+            flex-shrink: 0;
+            object-fit: cover;
+            max-height: 550px;
+        }
+        .botao-carrossel {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.3s ease;
+            user-select: none;
+            background-color: rgba(74, 93, 78, 0.4); /* Verde eucalipto translúcido */
+            border: none;
+        }
+        .botao-carrossel:hover {
+            background-color: rgba(74, 93, 78, 0.9);
+        }
+        .prev { left: 0; border-radius: 0 4px 4px 0; }
+        .next { right: 0; border-radius: 4px 0 0 4px; }
+
+        /* --- DETALHES DO EVENTO --- */
+        section { padding: 60px 20px; max-width: 950px; margin: 0 auto; text-align: center; }
+        
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: var(--cor-primaria);
+            margin-bottom: 20px;
+        }
+        .divisor { width: 60px; height: 1px; background-color: var(--cor-secundaria); margin: 0 auto 30px auto; }
+        .introducao { font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto 50px auto; }
+
+        .grid-eventos { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 20px; }
+        .card-evento {
+            background: var(--cor-cartao);
+            padding: 50px 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border: 1px solid #f0ede9;
+            flex: 1;
+            min-width: 300px;
+            max-width: 420px;
+            text-align: left;
+        }
+        .card-evento h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--cor-primaria);
+            margin-bottom: 20px;
+            font-weight: 400;
+            border-bottom: 1px solid #f5f2ee;
+            padding-bottom: 10px;
+        }
+        .detalhe-item { margin-bottom: 15px; font-size: 1rem; color: #444; display: flex; align-items: baseline; }
+        .detalhe-item strong { color: var(--cor-secundaria); font-weight: 500; margin-right: 6px; min-width: 70px; display: inline-block; }
+
+        .btn-rsvp {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 16px 45px;
+            background-color: var(--cor-primaria);
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            box-shadow: 0 5px 15px rgba(74, 93, 78, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-rsvp:hover { background-color: #39473c; transform: translateY(-2px); }
+
+        .btn-mapa {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: var(--cor-secundaria);
+            text-decoration: none;
+            border: 1px solid var(--cor-secundaria);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+        .btn-mapa:hover { background-color: var(--cor-secundaria); color: white; }
+
+        /* --- ESTILOS DA LISTA DE PRESENTES --- */
+        .grid-presentes { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; }
+        .card-presente {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+        .card-presente:hover { transform: translateY(-5px); }
+        .card-presente img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .nome-presente { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--cor-primaria); margin-bottom: 5px; font-weight: 600; }
+        .btn-presentear {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background-color: var(--cor-secundaria);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .btn-presentear:hover { background-color: #7a6a5d; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 3rem; }
+            .subtitulo { font-size: 0.9rem; letter-spacing: 3px; }
+            #contador { gap: 10px; }
+            .tempo-box { min-width: 70px; padding: 12px 8px; }
+            .tempo-numero { font-size: 1.7rem; }
+            section { padding: 60px 20px; }
+            .card-evento { padding: 35px 25px; }
+            .botao-carrossel { padding: 10px; font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Nadine & Angelo</h1>
+        <p class="subtitulo">26 de Setembro de 2026</p>
+        
+        <div id="contador">
+            <div class="tempo-box"><span class="tempo-numero" id="dias">00</span><span class="tempo-rotulo">Dias</span></div>
+            <div class="tempo-box"><span class="tempo-numero" id="horas">00</span><span class="tempo-rotulo">Horas</span></div>
+            <div class="tempo-box"><span class="tempo-numero" id="minutos">00</span><span class="tempo-rotulo">Minutos</span></div>
+            <div class="tempo-box"><span class="tempo-numero" id="segundos">00</span><span class="tempo-rotulo">Segundos</span></div>
+        </div>
+    </header>
+
+    <!-- === CARROSSEL DE FOTOS === -->
+    <section class="secao-carrossel">
+        <h2>Nossa História</h2>
+        <div class="divisor"></div>
+        <div class="carrossel-container">
+            <div class="carrossel-slide" id="slides">
+                <!-- Imagens puxadas da pasta "imagens" -->
+                <img src="imagens/foto1.jpg" alt="Foto 1">
+                <img src="imagens/foto2.jpg" alt="Foto 2">
+                <img src="imagens/foto3.jpg" alt="Foto 3">
+                <img src="imagens/foto4.jpg" alt="Foto 4">
+                <img src="imagens/foto5.jpg" alt="Foto 5">
+                <img src="imagens/foto6.jpg" alt="Foto 6">
+            </div>
+            <button class="botao-carrossel prev" onclick="mudarSlide(-1)">&#10094;</button>
+            <button class="botao-carrossel next" onclick="mudarSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="detalhes">
+        <h2>O Grande Dia</h2>
+        <div class="divisor"></div>
+        <p class="introducao">Estamos preparando cada espaço com muito carinho para celebrar nossa união. Confira abaixo os horários e locais para se programar.</p>
+        
+        <div class="grid-eventos">
+            <div class="card-evento">
+                <h3>A Cerimônia</h3>
+                <div class="detalhe-item"><strong>Data:</strong> 26/09/2026</div>
+                <div class="detalhe-item"><strong>Horário:</strong> 16:00h</div>
+                <div class="detalhe-item"><strong>Local:</strong> Igreja Sagrado Coração de Jesus</div>
+                <div class="detalhe-item"><strong>Cidade:</strong> Aparecida de Goiânia - GO</div>
+                <a href="https://share.google/44zqb617jegw8S1In" target="_blank" class="btn-mapa">📍 Ver no Mapa</a>
+            </div>
+            
+            <div class="card-evento">
+                <h3>A Recepção</h3>
+                <div class="detalhe-item"><strong>Data:</strong> 26/09/2026</div>
+                <div class="detalhe-item"><strong>Horário:</strong> Logo após a cerimônia</div>
+                <div class="detalhe-item"><strong>Local:</strong> Espaço Baluarte</div>
+                <div class="detalhe-item"><strong>Festa:</strong> Esperamos você para comemorar conosco!</div>
+                <a href="https://share.google/OtE6AFwk9ggmk1E8z" target="_blank" class="btn-mapa">📍 Ver no Mapa</a>
+            </div>
+        </div>
+
+        <div id="rsvp-container" style="max-width: 500px; margin: 80px auto 20px auto; padding: 40px; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; border: 1px solid #f0ede9;">
+            <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--cor-primaria); margin-bottom: 25px; font-weight: 400;">Confirme sua Presença</h3>
+            
+            <div id="passo-1">
+                <p style="margin-bottom: 15px; color: #555;">Por favor, digite seu primeiro nome ou como está no convite.</p>
+                <input type="text" id="input-nome" placeholder="Ex: Marlon" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; font-family: 'Montserrat', sans-serif;">
+                <button onclick="irParaSenha()" class="btn-rsvp" style="width: 100%; margin-top: 0;">Avançar</button>
+                <p id="erro-nome" style="color: red; margin-top: 10px; font-size: 0.9rem; display: none;">Por favor, digite um nome.</p>
+            </div>
+
+            <div id="passo-2" style="display: none;">
+                <p style="margin-bottom: 15px; color: #555;">Olá, <span id="display-nome-senha" style="font-weight: bold;"></span>! Digite os 4 últimos dígitos do seu celular.</p>
+                <input type="password" id="input-senha" placeholder="Ex: 9876" maxlength="4" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; text-align: center; letter-spacing: 5px; font-family: 'Montserrat', sans-serif;">
+                <button id="btn-login" onclick="fazerLogin()" class="btn-rsvp" style="width: 100%; margin-top: 0;">Acessar Convite</button>
+                <button onclick="voltarParaNome()" style="background: none; border: none; color: var(--cor-secundaria); margin-top: 15px; cursor: pointer; text-decoration: underline; font-family: 'Montserrat', sans-serif;">Voltar</button>
+                <p id="erro-senha" style="color: red; margin-top: 10px; font-size: 0.9rem; display: none;"></p>
+            </div>
+
+            <div id="passo-3" style="display: none;">
+                <p style="margin-bottom: 20px; color: #555; font-size: 1.1rem;">Bem-vindo(a)!<br>Por favor, confirme a presença para cada convidado abaixo:</p>
+                
+                <div id="lista-convidados" style="margin-bottom: 20px;"></div>
+                
+                <button id="btn-confirmar" onclick="enviarRSVP()" class="btn-rsvp" style="width: 100%; margin-top: 0;">Enviar Confirmação</button>
+                <p id="msg-sucesso" style="color: green; margin-top: 15px; font-weight: bold; display: none;"></p>
+            </div>
+
+            <div id="passo-4" style="display: none;">
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--cor-primaria); margin-bottom: 10px;">Lista de Presentes</h3>
+                <p style="margin-bottom: 25px; color: #555; font-size: 1rem;">O maior presente é a sua presença, mas se desejar nos abençoar com algo a mais, deixamos algumas sugestões abaixo:</p>
+                
+                <div class="grid-presentes">
+                    <div class="card-presente">
+                        <img src="https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&q=80&w=300" alt="Liquidificador">
+                        <div class="nome-presente">Liquidificador</div>
+                        <button class="btn-presentear" onclick="alert('Aqui você pode colocar um link para o seu Pix ou para a loja!')">Presentear</button>
+                    </div>
+
+                    <div class="card-presente">
+                        <img src="https://images.unsplash.com/photo-1574672280600-4accfa5b6f98?auto=format&fit=crop&q=80&w=300" alt="Faqueiro">
+                        <div class="nome-presente">Faqueiro Inox</div>
+                        <button class="btn-presentear" onclick="alert('Aqui você pode colocar um link para o seu Pix ou para a loja!')">Presentear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<script>
+    // --- 1. SCRIPT DO CONTADOR REGRESSIVO ---
+    const dataAlvo = new Date(2026, 8, 26, 16, 0, 0).getTime();
+    const rodarContador = setInterval(function() {
+        const agora = new Date().getTime();
+        const distancia = dataAlvo - agora;
+
+        const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+        document.getElementById("dias").innerText = dias < 10 ? "0" + dias : dias;
+        document.getElementById("horas").innerText = horas < 10 ? "0" + horas : horas;
+        document.getElementById("minutos").innerText = minutos < 10 ? "0" + minutos : minutos;
+        document.getElementById("segundos").innerText = segundos < 10 ? "0" + segundos : segundos;
+
+        if (distancia < 0) {
+            clearInterval(rodarContador);
+            document.getElementById("contador").innerHTML = "<p style='font-family: \"Cormorant Garamond\", serif; font-size: 1.6rem; color: var(--cor-primaria); font-style: italic;'>O grande dia chegou!</p>";
+        }
+    }, 1000);
+
+    // --- 2. SCRIPT DO CARROSSEL DE FOTOS ---
+    let indiceSlide = 0;
+    function mudarSlide(n) {
+        const slides = document.getElementById('slides');
+        const totalImagens = slides.children.length;
+        indiceSlide += n;
+        
+        if (indiceSlide >= totalImagens) { indiceSlide = 0; }
+        if (indiceSlide < 0) { indiceSlide = totalImagens - 1; }
+        
+        slides.style.transform = `translateX(${-indiceSlide * 100}%)`;
+    }
+    // Faz o carrossel rodar sozinho a cada 4 segundos
+    setInterval(() => mudarSlide(1), 4000);
+
+    // --- 3. SCRIPT DO RSVP E LISTA DE PRESENTES ---
+    const URL_DO_SCRIPT = "https://script.google.com/macros/s/AKfycbzLVngphZdhPTKbpJzzZvLTkJagWjnHQy6eyrmCUFHt7lsenhjcSV5pS9vu1vktlyY/exec"; 
+
+    let nomeVisitante = "";
+    let senhaVisitante = "";
+
+    function irParaSenha() {
+        const input = document.getElementById("input-nome").value.trim();
+        if(input === "") {
+            document.getElementById("erro-nome").style.display = "block";
+            return;
+        }
+        nomeVisitante = input;
+        document.getElementById("erro-nome").style.display = "none";
+        document.getElementById("display-nome-senha").innerText = nomeVisitante;
+        
+        document.getElementById("passo-1").style.display = "none";
+        document.getElementById("passo-2").style.display = "block";
+    }
+
+    function voltarParaNome() {
+        document.getElementById("passo-2").style.display = "none";
+        document.getElementById("passo-1").style.display = "block";
+        document.getElementById("erro-senha").style.display = "none";
+        document.getElementById("input-senha").value = "";
+    }
+
+    function criarCaixaPresenca(nomeConvidado) {
+        return `
+        <div style="margin-bottom: 15px; text-align: left; background: #f9f9f9; padding: 15px; border-radius: 6px; border: 1px solid #eee;">
+            <p style="margin-bottom: 8px; font-weight: bold; color: var(--cor-primaria);">${nomeConvidado}</p>
+            <select class="seletor-presenca" data-nome="${nomeConvidado}" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; font-family: 'Montserrat', sans-serif;">
+                <option value="Confirmado">Sim, estarei lá!</option>
+                <option value="Ausente">Não poderei ir</option>
+            </select>
+        </div>`;
+    }
+
+    function fazerLogin() {
+        senhaVisitante = document.getElementById("input-senha").value.trim();
+        const btn = document.getElementById("btn-login");
+        const erroMsg = document.getElementById("erro-senha");
+        
+        if(senhaVisitante.length < 4) {
+            erroMsg.innerText = "Digite os 4 dígitos numéricos.";
+            erroMsg.style.display = "block";
+            return;
+        }
+
+        btn.innerText = "Buscando convites...";
+        btn.disabled = true;
+        erroMsg.style.display = "none";
+
+        const params = new URLSearchParams();
+        params.append("action", "login");
+        params.append("nome", nomeVisitante);
+        params.append("senha", senhaVisitante);
+
+        fetch(URL_DO_SCRIPT, { method: "POST", body: params })
+            .then(res => res.json())
+            .then(data => {
+                if(data.status === "ok") {
+                    document.getElementById("passo-2").style.display = "none";
+                    document.getElementById("passo-3").style.display = "block";
+                    
+                    const listaDiv = document.getElementById("lista-convidados");
+                    listaDiv.innerHTML = "";
+                    listaDiv.innerHTML += criarCaixaPresenca(data.nomeReal);
+                    
+                    data.acompanhantes.forEach(acomp => {
+                        listaDiv.innerHTML += criarCaixaPresenca(acomp);
+                    });
+                } else {
+                    erroMsg.innerText = "Não encontramos essa combinação de nome e senha. Tente novamente.";
+                    erroMsg.style.display = "block";
+                    btn.innerText = "Acessar Convite";
+                    btn.disabled = false;
+                }
+            })
+            .catch(err => {
+                erroMsg.innerText = "Erro de conexão. Tente novamente.";
+                erroMsg.style.display = "block";
+                btn.innerText = "Acessar Convite";
+                btn.disabled = false;
+            });
+    }
+
+    function enviarRSVP() {
+        const btn = document.getElementById("btn-confirmar");
+        const sucessoMsg = document.getElementById("msg-sucesso");
+
+        btn.innerText = "Salvando...";
+        btn.disabled = true;
+
+        let respostasArray = [];
+        document.querySelectorAll(".seletor-presenca").forEach(select => {
+            const nome = select.getAttribute("data-nome");
+            const resposta = select.value;
+            respostasArray.push(`${nome} (${resposta})`);
+        });
+        
+        const respostasFormatadas = respostasArray.join(" | ");
+
+        const params = new URLSearchParams();
+        params.append("action", "rsvp");
+        params.append("nome", nomeVisitante);
+        params.append("senha", senhaVisitante);
+        params.append("respostas", respostasFormatadas);
+
+        fetch(URL_DO_SCRIPT, { method: "POST", body: params })
+            .then(res => res.json())
+            .then(data => {
+                sucessoMsg.innerText = "As confirmações foram registradas com sucesso! Muito obrigado.";
+                sucessoMsg.style.display = "block";
+                btn.style.display = "none"; 
+                document.querySelectorAll(".seletor-presenca").forEach(s => s.disabled = true);
+
+                setTimeout(function() {
+                    document.getElementById("passo-3").style.display = "none";
+                    document.getElementById("passo-4").style.display = "block";
+                }, 2000);
+            })
+            .catch(err => {
+                sucessoMsg.innerText = "Houve um erro, mas não se preocupe, tente novamente.";
+                sucessoMsg.style.color = "red";
+                sucessoMsg.style.display = "block";
+                btn.innerText = "Enviar Confirmação";
+                btn.disabled = false;
+            });
+    }
+</script>
+</body>
+</html>

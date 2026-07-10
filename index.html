@@ -137,6 +137,26 @@
         }
         .btn-rsvp:hover { background-color: #39473c; transform: translateY(-2px); }
 
+        /* Estilo do Botão de Mapa */
+        .btn-mapa {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: var(--cor-secundaria);
+            text-decoration: none;
+            border: 1px solid var(--cor-secundaria);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+        .btn-mapa:hover {
+            background-color: var(--cor-secundaria);
+            color: white;
+        }
+
         /* --- ESTILOS DA LISTA DE PRESENTES --- */
         .grid-presentes {
             display: flex;
@@ -223,6 +243,7 @@
                 <div class="detalhe-item"><strong>Horário:</strong> 16:00h</div>
                 <div class="detalhe-item"><strong>Local:</strong> Igreja Sagrado Coração de Jesus</div>
                 <div class="detalhe-item"><strong>Cidade:</strong> Aparecida de Goiânia - GO</div>
+                <a href="https://share.google/44zqb617jegw8S1In" target="_blank" class="btn-mapa">📍 Ver no Mapa</a>
             </div>
             
             <div class="card-evento">
@@ -230,14 +251,14 @@
                 <div class="detalhe-item"><strong>Data:</strong> 26/09/2026</div>
                 <div class="detalhe-item"><strong>Horário:</strong> Logo após a cerimônia</div>
                 <div class="detalhe-item"><strong>Local:</strong> Espaço Baluarte</div>
-                <div class="detalhe-item"><strong>Festa:</strong> Esperamos você para comemorar conosco!</div>
+                <div class="detalhe-item"><strong> </strong> Esperamos você para comemorar conosco!</div>
+                <a href="https://share.google/OtE6AFwk9ggmk1E8z" target="_blank" class="btn-mapa">📍 Ver no Mapa</a>
             </div>
         </div>
 
         <div id="rsvp-container" style="max-width: 500px; margin: 80px auto 20px auto; padding: 40px; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; border: 1px solid #f0ede9;">
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--cor-primaria); margin-bottom: 25px; font-weight: 400;">Confirme sua Presença</h3>
             
-            <!-- PASSO 1: NOME -->
             <div id="passo-1">
                 <p style="margin-bottom: 15px; color: #555;">Por favor, digite seu primeiro nome ou como está no convite.</p>
                 <input type="text" id="input-nome" placeholder="Ex: Marlon" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; font-family: 'Montserrat', sans-serif;">
@@ -245,7 +266,6 @@
                 <p id="erro-nome" style="color: red; margin-top: 10px; font-size: 0.9rem; display: none;">Por favor, digite um nome.</p>
             </div>
 
-            <!-- PASSO 2: SENHA -->
             <div id="passo-2" style="display: none;">
                 <p style="margin-bottom: 15px; color: #555;">Olá, <span id="display-nome-senha" style="font-weight: bold;"></span>! Digite os 4 últimos dígitos do seu celular.</p>
                 <input type="password" id="input-senha" placeholder="Ex: 9876" maxlength="4" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; text-align: center; letter-spacing: 5px; font-family: 'Montserrat', sans-serif;">
@@ -254,7 +274,6 @@
                 <p id="erro-senha" style="color: red; margin-top: 10px; font-size: 0.9rem; display: none;"></p>
             </div>
 
-            <!-- PASSO 3: CONFIRMAÇÃO DE MÚLTIPLAS PESSOAS -->
             <div id="passo-3" style="display: none;">
                 <p style="margin-bottom: 20px; color: #555; font-size: 1.1rem;">Bem-vindo(a)!<br>Por favor, confirme a presença para cada convidado abaixo:</p>
                 
@@ -264,7 +283,6 @@
                 <p id="msg-sucesso" style="color: green; margin-top: 15px; font-weight: bold; display: none;"></p>
             </div>
 
-            <!-- PASSO 4: LISTA DE PRESENTES -->
             <div id="passo-4" style="display: none;">
                 <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--cor-primaria); margin-bottom: 10px;">Lista de Presentes</h3>
                 <p style="margin-bottom: 25px; color: #555; font-size: 1rem;">O maior presente é a sua presença, mas se desejar nos abençoar com algo a mais, deixamos algumas sugestões abaixo:</p>
