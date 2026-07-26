@@ -107,12 +107,20 @@
         }
 
         .data-destaque {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 3.2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
             color: var(--cor-secundaria);
-            margin-bottom: 25px;
-            letter-spacing: 5px;
+            margin-bottom: 30px;
+        }
+
+        .hora-destaque {
+ font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            color: var(--cor-secundaria);
+            margin-bottom: 30px;
         }
 
         .local-destaque {
@@ -325,7 +333,7 @@
 
         <p class="data-destaque">26/09/26</p>
         
-        <p class="introducao">Às 16:00<br>Em Aparecida de Goiânia</p>
+        <p class="hora-destaque">às 16:00<br>Em Aparecida de Goiânia</p>
 
         <div id="contador">
             <div class="tempo-box"><span class="tempo-numero" id="dias">00</span><span class="tempo-rotulo">Dias</span></div>
@@ -381,18 +389,19 @@
         <p class="introducao">Nosso casamento será rodeado de natureza e o dia promete ser quente! Aposte em tecidos fluidos e sapatos confortáveis para curtirmos juntos a luz do fim de tarde.</p>
 
         <div id="rsvp-container" style="max-width: 650px; margin: 80px auto 20px auto; padding: 40px; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; border: 1px solid #f0ede9;">
-            <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--cor-primaria); margin-bottom: 25px; font-weight: 400;">Confirme sua Presença</h3>
+            
             
             <div id="passo-1">
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--cor-primaria); margin-bottom: 25px; font-weight: 400;">Confirme sua Presença</h3>
                 <p style="margin-bottom: 15px; color: #555;">Por favor, digite seu primeiro nome ou como está no convite.</p>
-                <input type="text" id="input-nome" placeholder="Ex: Marlon" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; font-family: 'Montserrat', sans-serif;">
+                <input type="text" id="input-nome" placeholder="Ex: Luis" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; font-family: 'Montserrat', sans-serif;">
                 <button onclick="irParaSenha()" class="btn-rsvp" style="width: 100%; margin-top: 0;">Avançar</button>
                 <p id="erro-nome" style="color: red; margin-top: 10px; font-size: 0.9rem; display: none;">Por favor, digite um nome.</p>
                 
-                <button onclick="pularParaPresentes()" style="background: none; border: none; color: var(--cor-secundaria); margin-top: 20px; cursor: pointer; text-decoration: underline; font-family: 'Montserrat', sans-serif; display: block; margin-left: auto; margin-right: auto; font-size: 0.9rem;">Já confirmei presença e quero ver a lista de presentes</button>
             </div>
 
             <div id="passo-2" style="display: none;">
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--cor-primaria); margin-bottom: 25px; font-weight: 400;">Confirme sua Presença</h3>
                 <p style="margin-bottom: 15px; color: #555;">Olá, <span id="display-nome-senha" style="font-weight: bold;"></span>! Digite os 4 últimos dígitos do seu celular.</p>
                 <input type="password" id="input-senha" placeholder="Ex: 9876" maxlength="4" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; text-align: center; letter-spacing: 5px; font-family: 'Montserrat', sans-serif;">
                 <button id="btn-login" onclick="fazerLogin()" class="btn-rsvp" style="width: 100%; margin-top: 0;">Acessar Convite</button>
@@ -401,6 +410,7 @@
             </div>
 
             <div id="passo-3" style="display: none;">
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--cor-primaria); margin-bottom: 25px; font-weight: 400;">Confirme sua Presença</h3>
                 <p style="margin-bottom: 20px; color: #555; font-size: 1.1rem;">Bem-vindo(a)!<br>Por favor, confirme a presença para cada convidado abaixo:</p>
                 <div id="lista-convidados" style="margin-bottom: 20px;"></div>
                 <button id="btn-confirmar" onclick="enviarRSVP()" class="btn-rsvp" style="width: 100%; margin-top: 0;">Enviar Confirmação</button>
@@ -408,8 +418,8 @@
             </div>
 
             <div id="passo-4" style="display: none;">
-                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--cor-primaria); margin-bottom: 10px;">Lista de Presentes</h3>
-                <p style="margin-bottom: 15px; color: #555; font-size: 1rem;">O maior presente é a sua presença, mas se desejar nos abençoar com algo a mais, deixamos algumas sugestões abaixo:</p>
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--cor-primaria); margin-bottom: 25px; font-weight: 400;">Lista de Presentes</h3>
+                <p style="margin-bottom: 15px; color: #555; font-size: 1rem;">O maior presente é a sua presença, mas se desejar nos abençoar com algo a mais, deixamos algumas sugestões abaixo:</br> Os presentes podem ser enviados para nossa casa no endereço:</br> <strong>Rua 22, quadra 88a, lote 10 - Vila Brasília - Aparecida de Goiânia - GO. CEP: 74911-210</strong></p>
                 
                 <button onclick="voltarParaRSVP()" style="background: none; border: none; color: var(--cor-secundaria); margin-bottom: 25px; cursor: pointer; text-decoration: underline; font-family: 'Montserrat', sans-serif; font-size: 0.9rem;">&larr; Voltar para a Confirmação de Presença</button>
                 
@@ -541,6 +551,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        </div>
+        <button onclick="pularParaPresentes()" style="background: none; border: none; color: var(--cor-primaria); margin-top: 20px; cursor: pointer; font-family: 'Cormorant Garamond', serif; display: block; margin-left: auto; margin-right: auto; font-size: 2rem;">Já confirmei presença e quero ver a <strong>lista de presentes</strong></button>
         </div>
     </section>
 
