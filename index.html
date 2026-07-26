@@ -763,29 +763,32 @@
             });
     }
     function registrarPresente(botao, nomeItem, linkStore) {
-        // Altera o estado do botão temporariamente
-        const textoOriginal = botao.innerText;
-        botao.innerText = "Aguarde...";
+        // 1. Já muda a cor e o texto do botão instantaneamente para o convidado ver que deu certo
+        botao.innerText = "Registrado ✔️";
+        botao.style.backgroundColor = "var(--cor-secundaria)"; // Fica marrom claro
         botao.disabled = true;
 
+        // 2. Abre a loja IMEDIATAMENTE (isso evita o bloqueio de pop-up do navegador)
+        if (linkStore !== "") {
+            window.open(linkStore, '_blank');
+        }
+
+        // 3. Envia o registro para a planilha em segundo plano de forma super rápida
         const params = new URLSearchParams();
         params.append("action", "presente");
-        params.append("nome", nomeVisitante || "Convidado Direto");
+        params.append("nome", nomeVisitante || "Convidado"); // Usa o nome logado
         params.append("item", nomeItem);
 
-        fetch(URL_DO_SCRIPT, { method: "POST", body: params })
-            .then(res => res.json())
-            .then(data => {
-                window.open(linkStore, '_blank');
-                botao.innerText = "Registrado";
-                botao.style.backgroundColor = "var(--cor-primaria)";
-            })
-            .catch(err => {
-                // Em caso de falha de rede, garante a execução primária da ação
-                window.open(linkStore, '_blank');
-                botao.innerText = textoOriginal;
-                botao.disabled = false;
-            });
+        // O modo 'no-cors' faz o envio silencioso sem travar o site do usuário
+        fetch(URL_DO_SCRIPT, { 
+            method: "POST", 
+            body: params,
+            mode: "no-cors" 
+        }).then(() => {
+            console.log("Presente enviado para a planilha!");
+        }).catch(err => {
+            console.log("Erro de rede no envio silencioso.");
+        });
     }
 </script>
 </body>
